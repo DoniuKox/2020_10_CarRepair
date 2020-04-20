@@ -9,7 +9,7 @@ class Register extends Component {
         lastname: '',
         email: '',
         password: '',
-        phonenumber: '',
+        phonenumber: ''
      }  
      this.onChange = this.onChange.bind(this)
      this.onSubmit = this.onSubmit.bind(this) 
@@ -31,9 +31,7 @@ class Register extends Component {
         }
 
         register(user).then(res => {
-            if(res) {
-                this.props.history.push('/login')
-            }
+            this.props.history.push('/login')
         })
     }
 
@@ -47,9 +45,9 @@ class Register extends Component {
                             <label htmlFor="email">Adres Email</label>
                             <input type="email"
                             className="form-control"
-                            name="Email"
+                            name="email"
                             placeholder="Wpisz Email"
-                            value={this.state.email}
+                            defaultValue={this.state.email}
                             onChange={this.onChange}
                             />
                         </div>
@@ -79,7 +77,7 @@ class Register extends Component {
                             className="form-control"
                             name="password"
                             placeholder="Wpisz Hasło"
-                            defaultValue={this.state.Password}
+                            defaultValue={this.state.password}
                             onChange={this.onChange}
                             />
                         </div>
@@ -89,7 +87,7 @@ class Register extends Component {
                             className="form-control"
                             name="phonenumber"
                             placeholder="Wpisz nr Telefonu"
-                            defaultValue={this.state.PhoneNumber}
+                            defaultValue={this.state.phonenumber}
                             onChange={this.onChange}
                             />
                         </div>

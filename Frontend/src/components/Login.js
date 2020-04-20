@@ -41,7 +41,7 @@ class Login extends Component {
                             <label htmlFor="email">Adres Email</label>
                             <input type="email"
                             className="form-control"
-                            name="Email"
+                            name="email"
                             placeholder="Wpisz Email"
                             defaultValue={this.state.email}
                             onChange={this.onChange}
