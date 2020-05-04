@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import {register} from './UserFunctions'
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 class Register extends Component {
     constructor(){
@@ -31,14 +33,25 @@ class Register extends Component {
         }
 
         register(user).then(res => {
-            this.props.history.push('/login')
+            if(res){
+                this.props.history.push('/login')
+            }
         })
     }
+
+    
 
     render() {
         return <div className="container">
             <div className="row">
                 <div className="col-md-6 mt-5 mx-auto">
+                <div style={{display: 'flex', alignItems: 'center',justifyContent: 'center',}}>
+                        <ButtonGroup variant="contained" color="primary" size="large"> 
+                        <Button> Jestem kierowcą</Button>
+                        <Button href="/registerWorkshop"color="default">Jestem mechanikiem</Button>
+                    </ButtonGroup>
+                </div>
+                <p></p>
                     <form noValidate onSubmit={this.onSubmit}>
                         <h1 className="h3 mb-3 font-weight-normal">Zarejestruj się!</h1>
                         <div className="form-group">

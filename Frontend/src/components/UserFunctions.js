@@ -11,6 +11,28 @@ export const register = newUser => {
     })
     .then(res => {
         console.log("Registered")
+        return true
+    })
+}
+export const registerWorkshop = newWorkshop => {
+    return axios
+    .post('users/registerWorkshop', {
+        firstname: newWorkshop.firstname,
+        lastname: newWorkshop.lastname,
+        email: newWorkshop.email,
+        password: newWorkshop.password,
+        phonenumber: newWorkshop.phonenumber,
+        addressline1: newWorkshop.addressline1,
+        addressline2: newWorkshop.addressline2,
+        city: newWorkshop.city,
+        country: newWorkshop.country,
+        postcode: newWorkshop.postcode,
+        name: newWorkshop.name,
+        fiscalid: newWorkshop.fiscalid
+    })
+    .then(res => {
+        console.log("Workshop registered")
+        return true
     })
 }
 

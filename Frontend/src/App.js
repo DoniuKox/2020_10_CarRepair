@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Landing from './components/Landing'
 import Register from './components/Register'
+import RegisterWorkshop from './components/RegisterWorkshop'
 import Login from './components/Login'
 import Profile from './components/Profile'
 
@@ -17,6 +18,7 @@ class App extends Component {
              <Route exact path="/" component={Landing} />
                <div className="container">
                  <Route exact path="/register" component={Register} />
+                 <Route exact path="/registerWorkshop" component={RegisterWorkshop} />
                  <Route exact path="/login" component={Login} />
                  <Route exact path="/profile" component={Profile} />
                </div>

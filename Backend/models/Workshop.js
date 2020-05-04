@@ -2,34 +2,26 @@ const Sequelize = require("sequelize")
 const db = require("../database/db")
 
 module.exports = db.sequelize.define(
-    'user',
+    'workshop',
     {
-        iduser: {
+        idworkshop: {
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        firstname: {
+        idaddress: {
+            type: Sequelize.TINYINT,
+            allowNull: false
+        },
+        name: {
             type: Sequelize.STRING,
             allowNull: false
         },
-        lastname: {
+        fiscalid: {
             type: Sequelize.STRING,
             allowNull: false
         },
-        email: {
-            type: Sequelize.STRING,
-            allowNull: false
-        },
-        password: {
-            type: Sequelize.STRING,
-            allowNull: false
-        },
-        phonenumber: {
-            type: Sequelize.STRING,
-            allowNull: false
-        },
-        workshop: {
+        iduser: {
             type: Sequelize.TINYINT,
             allowNull: false
         }
