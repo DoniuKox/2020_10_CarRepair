@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 var Users = require('./routes/Users')
 
-app.use('/users', )
+app.use('/users', Users)
 
 if (process.env.NODE_ENV === 'production'){
     app.use(express.static( 'client/build' ));
