@@ -4,7 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "server.js",
+    "heroku-postbuild": "cd .. && cd Frontend && npm && npm run build && npm start"
   },
   "author": "Michal Danielczuk",
   "license": "ISC",
