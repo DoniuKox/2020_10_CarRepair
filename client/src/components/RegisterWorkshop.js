@@ -60,7 +60,7 @@ class RegisterWorkshop extends Component {
                             <ButtonGroup variant="contained" color="primary" size="large"> 
                             <Button href="/register"color="default"> Jestem kierowcą</Button>
                             <Button>Jestem mechanikiem</Button>
-                        </ButtonGroup>
+                            </ButtonGroup>
                     </div>
                     <p></p>
                     <form noValidate onSubmit={this.onSubmit}>

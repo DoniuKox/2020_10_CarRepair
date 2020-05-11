@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import {Link, withRouter} from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
+
 
 class Navbar extends Component {
     logOut(e){
@@ -37,6 +39,25 @@ class Navbar extends Component {
             </li>
         </ul>
         )
+        const workshopLink = (
+            <ul className="navbar-nav">
+            <li className="nav-item">
+                <Link to="/profile" className="nav-link">
+                    Warsztat
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link to="/timetable" className="nav-link">
+                    Harmonogram
+                </Link>
+            </li>
+            <li className="nav-item">
+                <a href=" " onClick={this.logOut.bind(this)} className="nav-link">
+                    Wyloguj
+                </a>
+            </li>
+        </ul>
+        )
 
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
@@ -58,7 +79,7 @@ class Navbar extends Component {
                             </Link>
                         </li>
                     </ul>
-                    {localStorage.userToken ? userLink : loginRegLink}
+                    {localStorage.userToken ? (jwt_decode(localStorage.userToken).workshop===0 ? userLink : workshopLink) : loginRegLink}
                 </div>
             </nav>
         )

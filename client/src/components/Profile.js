@@ -23,13 +23,31 @@ class Profile extends Component {
 
     componentDidMount(){
         let decoded = jwt_decode(localStorage.userToken)
-        this.setState({
-            email: decoded.email,
-            firstname: decoded.firstname,
-            lastname: decoded.lastname,
-            phonenumber: decoded.phonenumber,
-            workshop: decoded.workshop
-        })
+        if(decoded.workshop===0){
+            this.setState({
+                email: decoded.email,
+                firstname: decoded.firstname,
+                lastname: decoded.lastname,
+                phonenumber: decoded.phonenumber,
+                workshop: decoded.workshop
+            })
+        }else{
+            this.setState({
+                email: decoded.email,
+                firstname: decoded.firstname,
+                lastname: decoded.lastname,
+                phonenumber: decoded.phonenumber,
+                workshop: decoded.workshop,
+                addressline1: decoded.addressline1,
+                addressline2: decoded.addressline2,
+                city: decoded.city,
+                country: decoded.country,
+                postcode: decoded.postcode,
+                name: decoded.name,
+                fiscalid: decoded.fiscalid
+            })
+        }
+
     }
 
     render() {
@@ -67,7 +85,7 @@ class Profile extends Component {
             <div className="container">
             <div className="jumbotron mt-5">
                 <div className="col-sm-8 mx-auto">
-                    <h1 className="text-center">Profil warsztatu - </h1>
+                    <h1 className="text-center">Profil warsztatu - {this.state.name}</h1>
                 </div>
                 <table className="table col-md-6 mx-auto">
                     <tbody>
@@ -88,12 +106,8 @@ class Profile extends Component {
                             <td>{this.state.phonenumber}</td>
                         </tr>
                         <tr>
-                            <td>Adres cz.1</td>
-                            <td>{this.state.addressline1}</td>
-                        </tr>
-                        <tr>
-                            <td>Adres cz.2</td>
-                            <td>{this.state.addressline2}</td>
+                            <td>Adres</td>
+                            <td>{this.state.addressline1+" "+this.state.addressline2}</td>
                         </tr>
                         <tr>
                             <td>Miasto</td>

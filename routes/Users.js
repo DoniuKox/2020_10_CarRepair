@@ -121,11 +121,12 @@ users.post('/login', (req, res) => {
     .then(user => {
         if(user){
             if(bcrypt.compareSync(req.body.password, user.password)) {
-                let tokenUser = jwt.sign(user.dataValues, process.env.SECRET_KEY, {expiresIn: 1440})
+
                 
-                /*let tokenWorkshop = ''
-                let tokenAddress = ''
-                if(user.workshop==1){
+                if(user.workshop===0){
+                    res.send(jwt.sign(user.dataValues, process.env.SECRET_KEY, {expiresIn: 1440}))
+                }
+                else{
                     Workshop.findOne({
                         where:{
                             iduser: user.iduser
@@ -138,21 +139,27 @@ users.post('/login', (req, res) => {
                             }
                         })
                         .then(address => {
-                            tokenWorkshop = jwt.sign(workshop.dataValues, process.env.SECRET_KEY, {expiresIn: 1440})
-                            tokenAddress = jwt.sign(address.dataValues, process.env.SECRET_KEY, {expiresIn: 1440})
+                            let workshopValues = {
+                                firstname: user.firstname,
+                                lastname: user.lastname,
+                                email: user.email,
+                                phonenumber: user.phonenumber,
+                                workshop: user.workshop,
+                                addressline1: address.addressline1,
+                                addressline2: address.addressline2,
+                                city: address.city,
+                                country: address.country,
+                                postcode: address.postcode,
+                                name: workshop.name,
+                                fiscalid: workshop.fiscalid
+                            }
+                            res.send(jwt.sign(workshopValues, process.env.SECRET_KEY, {expiresIn: 1440}))
+
                         })
 
                     })
                 }
-                
-                const result = {
-                    userTok: tokenUser,
-                    workshopTok: tokenWorkshop,
-                    addressTok: tokenAddress
-                }
-                */
                
-                res.send(tokenUser)
             }
         }else{
             res.status(400).json({error: 'User do not exists'})
