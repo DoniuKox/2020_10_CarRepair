@@ -11,13 +11,13 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 var Users = require('./routes/Users')
 
-app.use('/users', User)
+app.use('/users', )
 
 if (process.env.NODE_ENV === 'production'){
     app.use(express.static( 'client/build' ));
 
     app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirnamem, 'client', 'build', 'index.html'));
+        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
     })
 }
 
