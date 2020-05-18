@@ -8,6 +8,7 @@ import RegisterWorkshop from './components/RegisterWorkshop'
 import Login from './components/Login'
 import Profile from './components/Profile'
 import Timetable from './components/Timetable'
+import UserCar from './components/UserCar'
 
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
                  <Route exact path="/login" component={Login} />
                  <Route exact path="/profile" component={Profile} />
                  <Route exact path="/timetable" component={Timetable} />
+                 <Route exact path="/usercar" component={UserCar} />
                </div>
            </div>
        </Router>

@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt')
 const User = require("../models/User")
 const Address = require("../models/Address")
 const Workshop = require("../models/Workshop")
+const Car = require("../models/Car")
 
 
 users.use(cors())
