@@ -32,3 +32,16 @@ Używane:
 
 - Karta profilu warsztatu:
 ![image](https://user-images.githubusercontent.com/61984561/81585304-4177fb80-93b4-11ea-8797-a05c5dbad5ed.png)
+
+- Wyświtlanie harmonogramu warsztatu w postaci planu:
+![image](https://user-images.githubusercontent.com/61984561/82817836-fc68c480-9e9d-11ea-9b7d-9f7bee11b31a.png)
+
+- Definiowanie ram czasowych pracy warsztatu:
+![image](https://user-images.githubusercontent.com/61984561/82818022-523d6c80-9e9e-11ea-84b0-5372f6c3ed8f.png)
+
+- Karta zawierająca spis pojazdów kierowcy:
+![image](https://user-images.githubusercontent.com/61984561/82818214-aa746e80-9e9e-11ea-849a-1bbbc9e974c5.png)
+
+- Formularz dodawania nowych pojazdów:
+![image](https://user-images.githubusercontent.com/61984561/82818276-c4ae4c80-9e9e-11ea-9fb4-37734c54106a.png)
+
