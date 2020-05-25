@@ -1,5 +1,5 @@
 # 2020_10_CarRepair
-11/05/2020
+25/05/2020
 
 ![image](https://user-images.githubusercontent.com/61984561/81583671-f65ce900-93b1-11ea-9850-2d713837ad5e.png)
 
@@ -11,6 +11,7 @@ Używane:
 - Sequalize
 - JWT-decode
 - axios
+- Syncfusion - react-schedule
 
 # Funkcjonalności:
 - Strona startowa z wyszukiwarką:
