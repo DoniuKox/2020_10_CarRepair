@@ -113,6 +113,55 @@ users.post('/registerWorkshop', (req, res) => {
     })
 })
 
+users.post('/addcar', (req, res) => {
+    const carData = {
+        name: req.body.name,
+        mark: req.body.mark,
+        model: req.body.model,
+        plate: req.body.plate,
+        numbervin: req.body.numbervin,
+        iduser: req.body.iduser
+    }
+
+    Car.findOne({
+        where: {
+            numbervin: req.body.numbervin
+        }
+    })
+    .then(car => {
+        if(!car){
+            Car.create(carData)
+            .then (car => {
+                res.json({status: car + ' added'})
+            })
+            .catch(err => {
+                res.send('error: '+err)
+            })
+        }else{
+            res.json({error: "Car already exists"})
+        }
+    })
+    .catch(err => {
+        res.send('error: '+err)
+    })
+})
+
+users.post('/getcars', (req, res) => {
+    Car.findOne({
+        where: {
+            iduser: req.body.iduser
+        }
+    })
+    .then(cars => {
+        if(cars){            
+            res.send(jwt.sign(cars.dataValues, process.env.SECRET_KEY, {expiresIn: 1440}))
+        }
+    })
+    .catch(err => {
+        res.status(400).json({error: err})
+    })
+})
+
 users.post('/login', (req, res) => {
     User.findOne({
         where: {

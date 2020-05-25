@@ -7,6 +7,7 @@ class Navbar extends Component {
     logOut(e){
         e.preventDefault()
         localStorage.removeItem('userToken')
+        localStorage.removeItem('carsToken')
         this.props.history.push('/')
     }
 

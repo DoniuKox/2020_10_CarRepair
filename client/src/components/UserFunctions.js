@@ -44,9 +44,40 @@ export const login = user => {
     })
     .then(res => {
         localStorage.setItem('userToken', res.data)
+        
         return res.data
     })
     .catch(err => {
         console.log(err)
+    })
+}
+
+export const getcars = userid => {
+    return axios
+    .post('users/getcars', {
+        iduser: userid,
+    })
+    .then(res => {
+        localStorage.setItem('carsToken', res.data)
+        return res.data
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+export const addcar = newcar => {
+    return axios
+    .post('users/addcar', {
+        name: newcar.name,
+        mark: newcar.mark,
+        model: newcar.model,
+        plate: newcar.plate,
+        numbervin: newcar.numbervin,
+        iduser: newcar.iduser,
+    })
+    .then(res => {
+        console.log("Car Added!")
+        return true
     })
 }
