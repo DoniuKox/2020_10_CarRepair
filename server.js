@@ -10,8 +10,12 @@ app.use(cors())
 app.use(bodyParser.urlencoded({extended: false}))
 
 var Users = require('./routes/Users')
+var Workshops = require('./routes/Workshops')
+
 
 app.use('/users', Users)
+app.use('/workshops', Workshops)
+
 
 if (process.env.NODE_ENV === 'production'){
     app.use(express.static( 'client/build' ));
