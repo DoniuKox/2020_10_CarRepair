@@ -9,34 +9,17 @@ class UserCar extends Component {
     constructor(){
      super()
      this.state = {
-        carsData: [],
-        name: '',
-        mark: '',
-        model: '',
-        plate: '',
-        numbervin: '' 
+        carsData: []
     }
        
 }
 
 componentDidMount(){
     let decodedUser = jwt_decode(localStorage.userToken)
-    getcars(decodedUser.iduser)
-    if(localStorage.carsToken){
-    let decoded = jwt_decode(localStorage.carsToken)
-    this.setState({
-        carsData: decoded,
-        name: decoded.name,
-        mark: decoded.mark,
-        model: decoded.model,
-        plate: decoded.plate,
-        numbervin: decoded.numbervin 
-    });
-    }
-
-
-            
-}
+    getcars(decodedUser.iduser).then(res => {
+        this.setState({
+            carsData: res
+        })})}
 
     render() {
 
@@ -51,14 +34,16 @@ componentDidMount(){
                                     <td>Nr VIN</td>
                                     <td>Historia napraw</td>
                                 </tr>
-                                <tr>
-                                    <td>{this.state.name}</td>
-                                    <td>{this.state.mark}</td>
-                                    <td>{this.state.model}</td>
-                                    <td>{this.state.plate}</td>
-                                    <td>{this.state.numbervin}</td>
+                                {this.state.carsData.map(car => (
+                                    <tr>
+                                    <td>{car.name}</td>
+                                    <td>{car.mark}</td>
+                                    <td>{car.model}</td>
+                                    <td>{car.plate}</td>
+                                    <td>{car.numbervin}</td>
                                     <td><button  className="btn btn-primary btn-block">Sprawdź</button></td>
                                 </tr>
+                                ))}
                             </tbody>
                         </table>
         )
@@ -75,8 +60,8 @@ componentDidMount(){
                        <div className="col-sm-10 mx-auto">
                             <h1 className="text-center">Moje pojazdy</h1>
                             <p></p>
-                            {localStorage.carsToken ? haveCars : dontHaveCars}
-                            <div style={{'margin-top': '200px', display: 'flex', alignItems: 'center',justifyContent: 'center',}}>
+                            {this.state.carsData.length>0 ? haveCars : dontHaveCars}
+                            <div style={{'margin-top': '50px', display: 'flex', alignItems: 'center',justifyContent: 'center',}}>
                                 <ButtonGroup variant="contained" color="primary" size="large"> 
                                     <Button href="/addcar">Dodaj pojazd</Button>
                                 </ButtonGroup>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {getWorkshops} from './WorkshopFunctions'
-
-
+import {getOneWorkshop} from './WorkshopFunctions'
+import { Link } from 'react-router-dom'
 
 
 class Landing extends Component {
@@ -13,11 +13,20 @@ class Landing extends Component {
     }
 }
 
+onClick(e){
+
+  const idWork = e.target.name
+
+  getOneWorkshop(idWork)
+}
+
+
   updateSearch(event){
     this.setState({search: event.target.value.substr(0,50)})
   }
 
   componentDidMount(){
+    
     getWorkshops().then(res => {
       this.setState({
         workshops: res
@@ -68,7 +77,9 @@ class Landing extends Component {
                   </tr>
               </tbody>
               </table>
-              <button  className="btn btn-primary center">Umów wizytę!</button>
+              <Link to="/workshoppage">
+            <button  className="btn btn-primary center" name={workshop.idworkshop} onClick={this.onClick}>Umów wizytę!</button>
+              </Link>
               </div>
             ))}
  

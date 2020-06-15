@@ -9,3 +9,16 @@ export const getWorkshops = workshops => {
     })
 
 }
+
+export const getOneWorkshop = idworkshop => {
+    return axios
+    .post('workshops/getOneWorkshop', {
+        idworkshop: idworkshop
+    })
+    .then(res => {
+        localStorage.removeItem('oneWorkshop')
+        localStorage.setItem('oneWorkshop', res.data)
+        return res.data
+    })
+
+}

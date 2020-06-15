@@ -10,6 +10,7 @@ import Profile from './components/Profile'
 import Timetable from './components/Timetable'
 import UserCar from './components/UserCar'
 import AddCar from './components/AddCar'
+import WorkshopPage from './components/WorkshopPage';
 
 
 
@@ -29,6 +30,8 @@ class App extends Component {
                  <Route exact path="/timetable" component={Timetable} />
                  <Route exact path="/usercar" component={UserCar} />
                  <Route exact path="/addcar" component={AddCar} />
+                 <Route exact path="/workshoppage" component={WorkshopPage} />
+
 
                </div>
            </div>

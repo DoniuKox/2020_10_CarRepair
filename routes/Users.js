@@ -146,20 +146,28 @@ users.post('/addcar', (req, res) => {
     })
 })
 
-users.post('/getcars', (req, res) => {
-    Car.findOne({
+users.post('/getcars', async (req, res) => {
+
+    var resultList = []
+
+    const carsToShow = await Car.findAll({
         where: {
             iduser: req.body.iduser
         }
     })
-    .then(cars => {
-        if(cars){            
-            res.send(jwt.sign(cars.dataValues, process.env.SECRET_KEY, {expiresIn: 1440}))
+
+    carsToShow.forEach(element => {
+        carInfo={
+            name: element.name,
+            mark: element.mark,
+            model: element.model,
+            plate: element.plate,
+            numbervin: element.numbervin
         }
-    })
-    .catch(err => {
-        res.status(400).json({error: err})
-    })
+        resultList.push(carInfo)
+    });
+
+    res.send(resultList)
 })
 
 users.post('/login', (req, res) => {

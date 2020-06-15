@@ -52,10 +52,10 @@ export const login = user => {
     })
 }
 
-export const getcars = userid => {
+export const getcars = iduser => {
     return axios
     .post('users/getcars', {
-        iduser: userid,
+        iduser: iduser,
     })
     .then(res => {
         localStorage.setItem('carsToken', res.data)
